@@ -7,11 +7,15 @@
 
 <h3>Delete: {{ post.title }}</h3>
 
-<div class="form-gruop">
-    <form method='POST'>
-        {% csrf_token %}
-        <button>Are you sure!?</button></br>
-        <button class="btn btn-secondary">Delete Post!</button>
-</div>
+
+{% if user.is_authenticated %}
+    <div class="form-gruop">
+        <form method='POST'>
+            {% csrf_token %}
+            <button>Are you sure!?</button></br>
+            <button class="btn btn-secondary">Delete Post!</button>
+    </div>
 
 {% endblock %}
+
+{% endif %}

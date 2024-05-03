@@ -21,8 +21,14 @@ class HomeViev(ListView):
     ordering = ["-post_date"]
     # ordering = ['-id']
 
+
 def CategoryView(request, cats):
-    return render(request, 'categories.html', {'cats': cats})
+    category_posts = Post.objects.filter(category=cats.replace('-', ' '))
+    return render(
+        request,
+        "categories.html",
+        {"cats": cats.title(), "category_posts": category_posts},
+    )
 
 
 class ArticleDetailView(DetailView):

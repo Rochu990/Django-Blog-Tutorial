@@ -3,14 +3,14 @@
 {% block content%}
 
 
-<h1>Post</h1>
+<h1>Posts</h1>
 
 <ul>
 {% for post in object_list %}
     <li>
         <a href="{% url 'article-detail' post.pk %}">
             {{ post.title }}</a> - 
-        <a href={% url 'category' post.category%}> {{ post.category|slugify }}</a>
+        <a href="{% url 'category' post.category|slugify %}"> {{ post.category }}</a>
             {{ post.author.first_name }} 
             {{ post.author.last_name}} - 
             {{ post.post_date }}
@@ -25,6 +25,6 @@
         <br/>
     {{ post.body | slice:":200" }} </li>
 {% endfor %}
-    </ul>
+</ul>
 
 {% endblock %}

@@ -5,6 +5,7 @@ from .views import (
     AddCategoryView,
     AddPostView,
     ArticleDetailView,
+    CategoryListView,
     CategoryView,
     DeletePostView,
     HomeViev,
@@ -20,4 +21,5 @@ urlpatterns = [
     path("article/<int:pk>/remove", DeletePostView.as_view(), name="delete-post"),
     path("add_category/", AddCategoryView.as_view(), name="add_category"),
     path("category/<str:cats>/", CategoryView, name="category"),
+    path("category-list/", CategoryListView, name="category-list"),
 ]

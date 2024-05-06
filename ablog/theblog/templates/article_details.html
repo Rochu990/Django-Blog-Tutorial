@@ -3,6 +3,8 @@
 
 {% block content%}
 
+current user: {{ user.id }} <br>
+post author: {{ post.author.id }}
 <h1>{{ post.title }}</h1>
 <small>
     By: 
@@ -11,10 +13,12 @@
     {{ post.post_date}} -
 
     {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
 
-        <a href="{% url 'update-post' post.pk %}">Edit</a>,
+            <a href="{% url 'update-post' post.pk %}">Edit</a>,
 
-        <a href="{% url 'delete-post' post.pk %}">Delete</a><br/>
+            <a href="{% url 'delete-post' post.pk %}">Delete</a><br/>
+            {% endif %}
 
     {% endif %}
 

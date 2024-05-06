@@ -9,13 +9,15 @@
 
 
 {% if user.is_authenticated %}
-    <div class="form-gruop">
-        <form method='POST'>
-            {% csrf_token %}
-            <button>Are you sure!?</button></br>
-            <button class="btn btn-secondary">Delete Post!</button>
-    </div>
-
-{% endblock %}
+    {% if user.id == post.author.id %}
+        <div class="form-gruop">
+            <form method='POST'>
+                {% csrf_token %}
+                <button>Are you sure!?</button></br>
+                <button class="btn btn-secondary">Delete Post!</button>
+        </div>
+    {% endif %}
 
 {% endif %}
+
+{% endblock %}
